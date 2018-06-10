@@ -39,7 +39,13 @@ namespace AirlinesNET.AdminControl
         private void Airports_Click(object sender, RoutedEventArgs e)
         {
             Airports airports = new Airports();
-            airports.Show();
+            airports.ShowDialog();
+        }
+
+        private void invokeFlights_Click(object sender, RoutedEventArgs e)
+        {
+            Flights flights = new Flights();
+            flights.ShowDialog();
         }
     }
 }

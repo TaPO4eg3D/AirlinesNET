@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminControl\Flights.xaml.cs">
+      <DependentUpon>Flights.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminControl\Airports.xaml.cs">
       <DependentUpon>Airports.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Shortcuts.cs" />
+    <Page Include="AdminControl\Flights.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AdminControl\Airports.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

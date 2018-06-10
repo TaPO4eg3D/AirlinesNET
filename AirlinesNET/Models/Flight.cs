@@ -25,7 +25,7 @@ namespace AirlinesNET.Models
 
         public int Seats { get; set; }
 
-        public int TakenSeats { get; set; }
+        public int? TakenSeats { get; set; }
 
         public virtual Airport Airport { get; set; }
 
