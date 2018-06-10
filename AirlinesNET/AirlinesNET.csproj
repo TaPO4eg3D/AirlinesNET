@@ -34,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,6 +63,63 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminControl\Airports.xaml.cs">
+      <DependentUpon>Airports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminControl\CreateAirport.xaml.cs">
+      <DependentUpon>CreateAirport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminControl\CreateCompany.xaml.cs">
+      <DependentUpon>CreateCompany.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminControl\MainPanel.xaml.cs">
+      <DependentUpon>MainPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminControl\Companies.xaml.cs">
+      <DependentUpon>Companies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminControl\Users.xaml.cs">
+      <DependentUpon>Users.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Airport.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\PastFlight.cs" />
+    <Compile Include="Models\PastPurchase.cs" />
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="RegisterWindow.xaml.cs">
+      <DependentUpon>RegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Shortcuts.cs" />
+    <Page Include="AdminControl\Airports.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminControl\CreateAirport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminControl\CreateCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminControl\MainPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminControl\Companies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminControl\Users.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RegisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -85,6 +155,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +163,383 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\icons\add-square-button.png" />
+    <Resource Include="img\icons\adjust-contrast.png" />
+    <Resource Include="img\icons\align-justify.png" />
+    <Resource Include="img\icons\align-to-left.png" />
+    <Resource Include="img\icons\align-to-right.png" />
+    <Resource Include="img\icons\ambulance.png" />
+    <Resource Include="img\icons\anchor-shape.png" />
+    <Resource Include="img\icons\android-character-symbol.png" />
+    <Resource Include="img\icons\angle-arrow-down.png" />
+    <Resource Include="img\icons\angle-arrow-pointing-to-right.png" />
+    <Resource Include="img\icons\angle-pointing-to-left.png" />
+    <Resource Include="img\icons\apple-logo.png" />
+    <Resource Include="img\icons\archive-black-box.png" />
+    <Resource Include="img\icons\arrow-angle-pointing-down.png" />
+    <Resource Include="img\icons\arrow-down-on-black-circular-background.png" />
+    <Resource Include="img\icons\arrow-pointing-down.png" />
+    <Resource Include="img\icons\arrow-pointing-right-in-a-circle.png" />
+    <Resource Include="img\icons\arrow-pointing-to-left.png" />
+    <Resource Include="img\icons\arrow-pointing-to-right.png" />
+    <Resource Include="img\icons\arrow-up-on-a-black-circle-background.png" />
+    <Resource Include="img\icons\arrow-up.png" />
+    <Resource Include="img\icons\arrowhead-pointing-to-the-right.png" />
+    <Resource Include="img\icons\arrowhead-pointing-up-inside-a-square-box-outline.png" />
+    <Resource Include="img\icons\arrowheads-pointing-to-the-left.png" />
+    <Resource Include="img\icons\asterisk.png" />
+    <Resource Include="img\icons\ban-circle-symbol.png" />
+    <Resource Include="img\icons\bar-graph-on-a-rectangle.png" />
+    <Resource Include="img\icons\barcode.png" />
+    <Resource Include="img\icons\beaker.png" />
+    <Resource Include="img\icons\beer-jar-black-silhouette.png" />
+    <Resource Include="img\icons\bell-musical-tool.png" />
+    <Resource Include="img\icons\bitbucket-logotype-camera-lens-in-perspective.png" />
+    <Resource Include="img\icons\bitbucket-sign.png" />
+    <Resource Include="img\icons\bitcoin-logo.png" />
+    <Resource Include="img\icons\blank-file.png" />
+    <Resource Include="img\icons\bold-text-option.png" />
+    <Resource Include="img\icons\book.png" />
+    <Resource Include="img\icons\bookmark-black-shape.png" />
+    <Resource Include="img\icons\bookmark-white.png" />
+    <Resource Include="img\icons\branch-with-leaves-black-shape.png" />
+    <Resource Include="img\icons\briefcase.png" />
+    <Resource Include="img\icons\bug.png" />
+    <Resource Include="img\icons\building-front.png" />
+    <Resource Include="img\icons\bull-horn-announcer.png" />
+    <Resource Include="img\icons\bullseye.png" />
+    <Resource Include="img\icons\calendar-page-empty.png" />
+    <Resource Include="img\icons\calendar-with-spring-binder-and-date-blocks.png" />
+    <Resource Include="img\icons\camera-retro.png" />
+    <Resource Include="img\icons\caret-arrow-up.png" />
+    <Resource Include="img\icons\caret-down.png" />
+    <Resource Include="img\icons\center-text-alignment.png" />
+    <Resource Include="img\icons\certificate-shape.png" />
+    <Resource Include="img\icons\check-box-empty.png" />
+    <Resource Include="img\icons\check-mark.png" />
+    <Resource Include="img\icons\check-sign-in-a-rounded-black-square.png" />
+    <Resource Include="img\icons\check.png" />
+    <Resource Include="img\icons\checked-symbol.png" />
+    <Resource Include="img\icons\checkered-raised-flag.png" />
+    <Resource Include="img\icons\chevron-arrow-down.png" />
+    <Resource Include="img\icons\chevron-arrow-up.png" />
+    <Resource Include="img\icons\chevron-pointing-to-the-left.png" />
+    <Resource Include="img\icons\chevron-sign-down.png" />
+    <Resource Include="img\icons\chevron-sign-left.png" />
+    <Resource Include="img\icons\chevron-sign-to-right.png" />
+    <Resource Include="img\icons\chevron-up.png" />
+    <Resource Include="img\icons\circle-shape-outline.png" />
+    <Resource Include="img\icons\circle-with-an-arrow-pointing-to-left.png" />
+    <Resource Include="img\icons\circular-shape-silhouette.png" />
+    <Resource Include="img\icons\cloud-storage-download.png" />
+    <Resource Include="img\icons\cloud-storage-uploading-option.png" />
+    <Resource Include="img\icons\cocktail-glass.png" />
+    <Resource Include="img\icons\code-fork-symbol.png" />
+    <Resource Include="img\icons\code.png" />
+    <Resource Include="img\icons\coffee-cup-on-a-plate-black-silhouettes.png" />
+    <Resource Include="img\icons\cog-wheel-silhouette.png" />
+    <Resource Include="img\icons\collapse-window-option.png" />
+    <Resource Include="img\icons\comment-black-oval-bubble-shape.png" />
+    <Resource Include="img\icons\comment-white-oval-bubble.png" />
+    <Resource Include="img\icons\comments.png" />
+    <Resource Include="img\icons\compass-circular-variant.png" />
+    <Resource Include="img\icons\computer-tablet.png" />
+    <Resource Include="img\icons\copy-document.png" />
+    <Resource Include="img\icons\correct-symbol.png" />
+    <Resource Include="img\icons\couple-of-arrows-changing-places.png" />
+    <Resource Include="img\icons\credit-card.png" />
+    <Resource Include="img\icons\crop-symbol.png" />
+    <Resource Include="img\icons\cross-mark-on-a-black-circle-background.png" />
+    <Resource Include="img\icons\css-3-logo.png" />
+    <Resource Include="img\icons\cursor.png" />
+    <Resource Include="img\icons\cut.png" />
+    <Resource Include="img\icons\dashboard.png" />
+    <Resource Include="img\icons\delivery-truck-silhouette.png" />
+    <Resource Include="img\icons\desktop-monitor.png" />
+    <Resource Include="img\icons\dollar-symbol.png" />
+    <Resource Include="img\icons\dot-and-circle.png" />
+    <Resource Include="img\icons\double-angle-pointing-to-right.png" />
+    <Resource Include="img\icons\double-left-chevron.png" />
+    <Resource Include="img\icons\double-sided-eraser.png" />
+    <Resource Include="img\icons\double-strikethrough-option.png" />
+    <Resource Include="img\icons\down-arrow.png" />
+    <Resource Include="img\icons\download-symbol.png" />
+    <Resource Include="img\icons\download-to-storage-drive.png" />
+    <Resource Include="img\icons\dribbble-logo.png" />
+    <Resource Include="img\icons\dropbox-logo.png" />
+    <Resource Include="img\icons\earth-globe.png" />
+    <Resource Include="img\icons\edit-interface-sign.png" />
+    <Resource Include="img\icons\eject-symbol.png" />
+    <Resource Include="img\icons\envelope-of-white-paper.png" />
+    <Resource Include="img\icons\envelope.png" />
+    <Resource Include="img\icons\euro-currency-symbol.png" />
+    <Resource Include="img\icons\exchange-arrows.png" />
+    <Resource Include="img\icons\exclamation-sign.png" />
+    <Resource Include="img\icons\exclamation.png" />
+    <Resource Include="img\icons\external-link-square-with-an-arrow-in-right-diagonal.png" />
+    <Resource Include="img\icons\external-link-symbol.png" />
+    <Resource Include="img\icons\eye-open.png" />
+    <Resource Include="img\icons\eye-with-a-diagonal-line-interface-symbol-for-invisibility.png" />
+    <Resource Include="img\icons\facebook-logo-1.png" />
+    <Resource Include="img\icons\facebook-logo.png" />
+    <Resource Include="img\icons\facetime-button.png" />
+    <Resource Include="img\icons\fast-forward-arrows.png" />
+    <Resource Include="img\icons\female-silhouette.png" />
+    <Resource Include="img\icons\fighter-jet-silhouette.png" />
+    <Resource Include="img\icons\file.png" />
+    <Resource Include="img\icons\film-strip-with-two-photograms.png" />
+    <Resource Include="img\icons\filter-tool-black-shape.png" />
+    <Resource Include="img\icons\finger-of-a-hand-pointing-to-right-direction.png" />
+    <Resource Include="img\icons\fire-extinguisher.png" />
+    <Resource Include="img\icons\fire-symbol.png" />
+    <Resource Include="img\icons\flag-black-shape.png" />
+    <Resource Include="img\icons\flickr-website-logo-silhouette.png" />
+    <Resource Include="img\icons\fluffy-cloud-silhouette.png" />
+    <Resource Include="img\icons\folder-closed-black-shape.png" />
+    <Resource Include="img\icons\folder-white-shape.png" />
+    <Resource Include="img\icons\font-selection-editor.png" />
+    <Resource Include="img\icons\font-symbol-of-letter-a.png" />
+    <Resource Include="img\icons\fork-and-knife-silhouette.png" />
+    <Resource Include="img\icons\forward-button.png" />
+    <Resource Include="img\icons\four-black-squares.png" />
+    <Resource Include="img\icons\foursquare-button.png" />
+    <Resource Include="img\icons\frown.png" />
+    <Resource Include="img\icons\fullscreen-symbol.png" />
+    <Resource Include="img\icons\gamepad-console.png" />
+    <Resource Include="img\icons\gift-box.png" />
+    <Resource Include="img\icons\github-character.png" />
+    <Resource Include="img\icons\github-logo.png" />
+    <Resource Include="img\icons\github-sign.png" />
+    <Resource Include="img\icons\gittip-website-logo.png" />
+    <Resource Include="img\icons\google-plus-symbol-1.png" />
+    <Resource Include="img\icons\google-plus-symbol.png" />
+    <Resource Include="img\icons\great-britain-pound.png" />
+    <Resource Include="img\icons\group-profile-users.png" />
+    <Resource Include="img\icons\half-star-shape.png" />
+    <Resource Include="img\icons\hand-finger-pointing-down.png" />
+    <Resource Include="img\icons\hand-pointing-to-left-direction.png" />
+    <Resource Include="img\icons\hand-pointing-upward.png" />
+    <Resource Include="img\icons\hard-drive.png" />
+    <Resource Include="img\icons\heart-shape-outline.png" />
+    <Resource Include="img\icons\heart-shape-silhouette.png" />
+    <Resource Include="img\icons\home.png" />
+    <Resource Include="img\icons\horizontal-resize-option.png" />
+    <Resource Include="img\icons\hostpital-building.png" />
+    <Resource Include="img\icons\hotel-letter-h-sign-inside-a-black-rounded-square.png" />
+    <Resource Include="img\icons\html-5-logo.png" />
+    <Resource Include="img\icons\inbox.png" />
+    <Resource Include="img\icons\increase-size-option.png" />
+    <Resource Include="img\icons\indent-right.png" />
+    <Resource Include="img\icons\information-button.png" />
+    <Resource Include="img\icons\information-symbol.png" />
+    <Resource Include="img\icons\instagram-symbol.png" />
+    <Resource Include="img\icons\italicize-text.png" />
+    <Resource Include="img\icons\keyboard.png" />
+    <Resource Include="img\icons\left-arrow-1.png" />
+    <Resource Include="img\icons\left-arrow.png" />
+    <Resource Include="img\icons\left-indentation-option.png" />
+    <Resource Include="img\icons\legal-hammer.png" />
+    <Resource Include="img\icons\lemon.png" />
+    <Resource Include="img\icons\leter-a-inside-a-black-circle.png" />
+    <Resource Include="img\icons\letter-p-symbol.png" />
+    <Resource Include="img\icons\level-up.png" />
+    <Resource Include="img\icons\light-bulb.png" />
+    <Resource Include="img\icons\lightning-bolt-shadow.png" />
+    <Resource Include="img\icons\link-symbol.png" />
+    <Resource Include="img\icons\linkedin-letters.png" />
+    <Resource Include="img\icons\linkedin-sign.png" />
+    <Resource Include="img\icons\linux-logo.png" />
+    <Resource Include="img\icons\list-on-window.png" />
+    <Resource Include="img\icons\list-with-dots.png" />
+    <Resource Include="img\icons\list.png" />
+    <Resource Include="img\icons\listing-option.png" />
+    <Resource Include="img\icons\long-arrow-pointing-to-left.png" />
+    <Resource Include="img\icons\long-arrow-pointing-to-the-right.png" />
+    <Resource Include="img\icons\long-arrow-pointing-up.png" />
+    <Resource Include="img\icons\magic-wand.png" />
+    <Resource Include="img\icons\magnifying-glass.png" />
+    <Resource Include="img\icons\man.png" />
+    <Resource Include="img\icons\map-marker.png" />
+    <Resource Include="img\icons\maxcdn-website-logo.png" />
+    <Resource Include="img\icons\medical-kit.png" />
+    <Resource Include="img\icons\meh-face-emoticon.png" />
+    <Resource Include="img\icons\microphone-black-shape.png" />
+    <Resource Include="img\icons\microphone-off.png" />
+    <Resource Include="img\icons\minus-button.png" />
+    <Resource Include="img\icons\minus-sign-inside-a-black-circle.png" />
+    <Resource Include="img\icons\minus-sign-inside-a-black-rounded-square-shape.png" />
+    <Resource Include="img\icons\minus-sign-on-a-square-outline.png" />
+    <Resource Include="img\icons\minus-symbol.png" />
+    <Resource Include="img\icons\mobile-phone.png" />
+    <Resource Include="img\icons\moon-phase-outline.png" />
+    <Resource Include="img\icons\move-option.png" />
+    <Resource Include="img\icons\music-headphones.png" />
+    <Resource Include="img\icons\music-note-black-symbol.png" />
+    <Resource Include="img\icons\musical-bell-outline.png" />
+    <Resource Include="img\icons\nine-black-tiles.png" />
+    <Resource Include="img\icons\numbered-list.png" />
+    <Resource Include="img\icons\open-folder-outline.png" />
+    <Resource Include="img\icons\open-folder.png" />
+    <Resource Include="img\icons\open-laptop-computer.png" />
+    <Resource Include="img\icons\open-padlock-silhouette.png" />
+    <Resource Include="img\icons\open-wrench-tool-silhouette.png" />
+    <Resource Include="img\icons\padlock-unlock.png" />
+    <Resource Include="img\icons\padlock.png" />
+    <Resource Include="img\icons\paper-bill.png" />
+    <Resource Include="img\icons\paper-clip-outline.png" />
+    <Resource Include="img\icons\paper-push-pin.png" />
+    <Resource Include="img\icons\paste-from-clipboard.png" />
+    <Resource Include="img\icons\pause-symbol.png" />
+    <Resource Include="img\icons\pencil.png" />
+    <Resource Include="img\icons\photo-camera.png" />
+    <Resource Include="img\icons\picture.png" />
+    <Resource Include="img\icons\pinterest-logo.png" />
+    <Resource Include="img\icons\pinterest-sign.png" />
+    <Resource Include="img\icons\plane.png" />
+    <Resource Include="img\icons\plant-leaf-with-white-details.png" />
+    <Resource Include="img\icons\play-button.png" />
+    <Resource Include="img\icons\play-circle.png" />
+    <Resource Include="img\icons\play-sign.png" />
+    <Resource Include="img\icons\play-video-button.png" />
+    <Resource Include="img\icons\plus-black-symbol.png" />
+    <Resource Include="img\icons\plus-sign-in-a-black-circle.png" />
+    <Resource Include="img\icons\plus-symbol-in-a-rounded-black-square.png" />
+    <Resource Include="img\icons\power-button-off.png" />
+    <Resource Include="img\icons\printing-tool.png" />
+    <Resource Include="img\icons\puzzle-piece-silhouette.png" />
+    <Resource Include="img\icons\qr-code.png" />
+    <Resource Include="img\icons\question-mark-on-a-circular-black-background.png" />
+    <Resource Include="img\icons\question-sign.png" />
+    <Resource Include="img\icons\quote-left.png" />
+    <Resource Include="img\icons\reduced-volume.png" />
+    <Resource Include="img\icons\refresh-arrow.png" />
+    <Resource Include="img\icons\refresh-page-option.png" />
+    <Resource Include="img\icons\remove-button.png" />
+    <Resource Include="img\icons\remove-symbol.png" />
+    <Resource Include="img\icons\renren-social-network-of-china-logotype.png" />
+    <Resource Include="img\icons\reorder-option.png" />
+    <Resource Include="img\icons\reply-arrow.png" />
+    <Resource Include="img\icons\reply.png" />
+    <Resource Include="img\icons\resize-option.png" />
+    <Resource Include="img\icons\retweet-arrows-symbol.png" />
+    <Resource Include="img\icons\rewind-button.png" />
+    <Resource Include="img\icons\right-arrow-in-a-circle.png" />
+    <Resource Include="img\icons\right-chevron.png" />
+    <Resource Include="img\icons\right-quotation-mark.png" />
+    <Resource Include="img\icons\road-perspective.png" />
+    <Resource Include="img\icons\rounded-black-square-shape.png" />
+    <Resource Include="img\icons\rss-feed-button.png" />
+    <Resource Include="img\icons\rss-symbol.png" />
+    <Resource Include="img\icons\rupee-indian.png" />
+    <Resource Include="img\icons\save-file-option.png" />
+    <Resource Include="img\icons\screenshot.png" />
+    <Resource Include="img\icons\settings.png" />
+    <Resource Include="img\icons\share-option.png" />
+    <Resource Include="img\icons\share-post-symbol.png" />
+    <Resource Include="img\icons\share-symbol.png" />
+    <Resource Include="img\icons\shield.png" />
+    <Resource Include="img\icons\shopping-cart-black-shape.png" />
+    <Resource Include="img\icons\sign-in.png" />
+    <Resource Include="img\icons\sign-out-option.png" />
+    <Resource Include="img\icons\signal-bars.png" />
+    <Resource Include="img\icons\sitemap.png" />
+    <Resource Include="img\icons\skype-logo.png" />
+    <Resource Include="img\icons\small-rocket-ship-silhouette.png" />
+    <Resource Include="img\icons\smile.png" />
+    <Resource Include="img\icons\sort-arrows-couple-pointing-up-and-down.png" />
+    <Resource Include="img\icons\sort-by-alphabet.png" />
+    <Resource Include="img\icons\sort-by-attributes-interface-button-option.png" />
+    <Resource Include="img\icons\sort-by-attributes.png" />
+    <Resource Include="img\icons\sort-by-numeric-order.png" />
+    <Resource Include="img\icons\sort-by-order.png" />
+    <Resource Include="img\icons\sort-down.png" />
+    <Resource Include="img\icons\sort-reverse-alphabetical-order.png" />
+    <Resource Include="img\icons\sort-up.png" />
+    <Resource Include="img\icons\speech-bubbles-comment-option.png" />
+    <Resource Include="img\icons\spinner-of-dots.png" />
+    <Resource Include="img\icons\square-shape-shadow.png" />
+    <Resource Include="img\icons\stack-exchange-logo.png" />
+    <Resource Include="img\icons\stack-exchange-symbol.png" />
+    <Resource Include="img\icons\star-1.png" />
+    <Resource Include="img\icons\star-half-empty.png" />
+    <Resource Include="img\icons\star.png" />
+    <Resource Include="img\icons\step-backward.png" />
+    <Resource Include="img\icons\step-forward.png" />
+    <Resource Include="img\icons\stethoscope.png" />
+    <Resource Include="img\icons\strikethrough.png" />
+    <Resource Include="img\icons\suitcase-with-white-details.png" />
+    <Resource Include="img\icons\sun.png" />
+    <Resource Include="img\icons\superscript-text-formatting.png" />
+    <Resource Include="img\icons\table-grid.png" />
+    <Resource Include="img\icons\tag-black-shape.png" />
+    <Resource Include="img\icons\tags.png" />
+    <Resource Include="img\icons\tasks-list.png" />
+    <Resource Include="img\icons\telephone-handle-silhouette.png" />
+    <Resource Include="img\icons\telephone-symbol-button.png" />
+    <Resource Include="img\icons\terminal.png" />
+    <Resource Include="img\icons\text-file-1.png" />
+    <Resource Include="img\icons\text-file.png" />
+    <Resource Include="img\icons\text-height-adjustment.png" />
+    <Resource Include="img\icons\text-width.png" />
+    <Resource Include="img\icons\thin-arrowheads-pointing-down.png" />
+    <Resource Include="img\icons\three-small-square-shapes.png" />
+    <Resource Include="img\icons\thumb-down.png" />
+    <Resource Include="img\icons\thumbs-down-silhouette.png" />
+    <Resource Include="img\icons\thumbs-up-hand-symbol.png" />
+    <Resource Include="img\icons\thumbs-up.png" />
+    <Resource Include="img\icons\ticket.png" />
+    <Resource Include="img\icons\time.png" />
+    <Resource Include="img\icons\tint-drop.png" />
+    <Resource Include="img\icons\trash.png" />
+    <Resource Include="img\icons\trello-website-logo.png" />
+    <Resource Include="img\icons\trophy.png" />
+    <Resource Include="img\icons\tumblr-logo-1.png" />
+    <Resource Include="img\icons\tumblr-logo.png" />
+    <Resource Include="img\icons\turkish-lire-symbol.png" />
+    <Resource Include="img\icons\twitter-black-shape.png" />
+    <Resource Include="img\icons\twitter-sign.png" />
+    <Resource Include="img\icons\two-columns-layout.png" />
+    <Resource Include="img\icons\u-shaped-thick-magnet.png" />
+    <Resource Include="img\icons\umbrella-black-silhouette.png" />
+    <Resource Include="img\icons\underline-text-option.png" />
+    <Resource Include="img\icons\undo-arrow.png" />
+    <Resource Include="img\icons\unlink-symbol.png" />
+    <Resource Include="img\icons\up-arrow.png" />
+    <Resource Include="img\icons\up-chevron-button.png" />
+    <Resource Include="img\icons\upload-button.png" />
+    <Resource Include="img\icons\upload.png" />
+    <Resource Include="img\icons\user-md-symbol.png" />
+    <Resource Include="img\icons\user-shape.png" />
+    <Resource Include="img\icons\vertical-ellipsis.png" />
+    <Resource Include="img\icons\vertical-resizing-option.png" />
+    <Resource Include="img\icons\video-play-square-button.png" />
+    <Resource Include="img\icons\vimeo-square-logo.png" />
+    <Resource Include="img\icons\vintage-key-outline.png" />
+    <Resource Include="img\icons\vk-social-network-logo.png" />
+    <Resource Include="img\icons\volume-off.png" />
+    <Resource Include="img\icons\volume-up-interface-symbol.png" />
+    <Resource Include="img\icons\warning-sign-on-a-triangular-background.png" />
+    <Resource Include="img\icons\weibo-website-logo.png" />
+    <Resource Include="img\icons\wheelchair.png" />
+    <Resource Include="img\icons\white-flag-symbol.png" />
+    <Resource Include="img\icons\windows-logo-silhouette.png" />
+    <Resource Include="img\icons\x2-symbol-of-a-letter-and-a-number-subscript.png" />
+    <Resource Include="img\icons\xing-logo.png" />
+    <Resource Include="img\icons\xing-logotype.png" />
+    <Resource Include="img\icons\yen-symbol.png" />
+    <Resource Include="img\icons\youtube-logo-1.png" />
+    <Resource Include="img\icons\youtube-logo-2.png" />
+    <Resource Include="img\icons\youtube-logo.png" />
+    <Resource Include="img\icons\zoom-in.png" />
+    <Resource Include="img\icons\zoom-out.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
