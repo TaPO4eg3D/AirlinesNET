@@ -65,6 +65,7 @@ namespace AirlinesNET
                 case 1:
                     AdminControl.MainPanel mainPanel = new AdminControl.MainPanel();
                     mainPanel.Show();
+                    mainPanel.Closed += MainPanel_Closed;
                     break;
                 default:
                     this.Show();
@@ -72,6 +73,11 @@ namespace AirlinesNET
             }
             
 
+        }
+
+        private void MainPanel_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
