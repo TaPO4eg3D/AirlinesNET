@@ -82,7 +82,7 @@ namespace AirlinesNET.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Profiles)
-                .WithRequired(e => e.User)
+                .WithOptional(e => e.User)
                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<User>()

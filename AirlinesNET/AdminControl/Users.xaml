@@ -41,11 +41,15 @@
             </TextBlock.Style>
         </TextBlock>
         <Image Source="/img/icons/magnifying-glass.png" Margin="236,11,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
-        <Button x:Name="deleteEntity" Click="deleteEntity_Click" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Margin="0,22,10,0" VerticalAlignment="Top" Width="39" Height="39">
+        <Button x:Name="deleteEntity" Click="deleteEntity_Click" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Margin="0,22,54,0" VerticalAlignment="Top" Width="39" Height="39">
             <Image Source="/img/icons/trash.png"/>
+        </Button>
+        <Button x:Name="addEntity" Click="addEntity_Click" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Margin="0,22,10,0" VerticalAlignment="Top" Width="39" Height="39">
+            <Image Source="/img/icons/plus-black-symbol.png"/>
         </Button>
         <CheckBox Content="Только с паспортом" x:Name="onlyPassport" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Click="checkBoxTrigger"/>
         <CheckBox Content="Поиск по работникам" x:Name="onlyEmployee" HorizontalAlignment="Left" Margin="158,38,0,0" VerticalAlignment="Top" Click="checkBoxTrigger"/>
+        <CheckBox Content="Только анонимные" x:Name="onlyAnon" HorizontalAlignment="Left" Margin="316,38,0,0" VerticalAlignment="Top" Click="checkBoxTrigger"/>
 
     </Grid>
 </Window>

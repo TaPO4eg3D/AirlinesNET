@@ -30,7 +30,7 @@ namespace AirlinesNET.Models
         [StringLength(110)]
         public string PhoneNumber { get; set; }
 
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
         public virtual DocumentType DocumentType1 { get; set; }
 

@@ -27,8 +27,18 @@ namespace AirlinesNET.AdminControl
         {
             string searchText = searchField.Text;
             var data = from p in db.Profiles
-                       where p.FullName.Contains(searchText) || p.SeriesAndNumber.Contains(searchText)
+                       where (p.FullName.Contains(searchText) || p.SeriesAndNumber.Contains(searchText))
                        select p;
+
+            if (onlyAnon.IsChecked == true)
+            {
+                data = data.Where(d => d.UserID == null);
+            }
+            else
+            {
+                data = data.Where(d => d.UserID != null);
+            }
+
             if (onlyPassport.IsChecked == true)
             {
                 data = data.Where(d => d.DocumentType == 0);
@@ -56,6 +66,12 @@ namespace AirlinesNET.AdminControl
             fetchData();
         }
 
+        private void addEntity_Click(object sender, RoutedEventArgs e)
+        {
+            AddAnonUser addAnon = new AddAnonUser();
+            addAnon.Show();
+        }
+
         private void deleteEntity_Click(object sender, RoutedEventArgs e)
         {
             var selectedEntities = mainGrid.SelectedItems.Cast<Profile>().ToList();
@@ -71,8 +87,15 @@ namespace AirlinesNET.AdminControl
                 return;
             }
             
+
             foreach(var _entity in selectedEntities)
             {
+                if (_entity.UserID == null)
+                {
+                    var entityProf = db.Profiles.Where(p => p.ProfileID == _entity.ProfileID);
+                    db.Profiles.RemoveRange(entityProf);
+                    continue;
+                }
                 var entity = db.Users.Where(u => u.UserID == _entity.UserID).FirstOrDefault();
                 db.Users.Remove(entity);
             }

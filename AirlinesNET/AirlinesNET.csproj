@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminControl\AddAnonUser.xaml.cs">
+      <DependentUpon>AddAnonUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminControl\CreateFlight.xaml.cs">
       <DependentUpon>CreateFlight.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Shortcuts.cs" />
+    <Page Include="AdminControl\AddAnonUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminControl\CreateFlight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

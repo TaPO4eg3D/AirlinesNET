@@ -1,0 +1,23 @@
+﻿<Window x:Class="AirlinesNET.AdminControl.AddAnonUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlinesNET.AdminControl"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="Добавить анонимного пользователя" Height="276.37" Width="445.89">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="ФИО:" VerticalAlignment="Top"/>
+        <TextBox x:Name="fullNameField" HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" VerticalAlignment="Top" Width="198"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,60,0,0" TextWrapping="Wrap" Text="Тип документа:" VerticalAlignment="Top"/>
+        <ComboBox x:Name="selectDocument" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="198" DisplayMemberPath="Name" />
+        <TextBlock HorizontalAlignment="Left" Margin="229,59,0,0" TextWrapping="Wrap" Text="Серия и номер:" VerticalAlignment="Top"/>
+        <TextBox x:Name="serialField" Height="23" Margin="229,80,11,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,118,0,0" TextWrapping="Wrap" Text="Адрес:" VerticalAlignment="Top"/>
+        <TextBox x:Name="addressField" Height="23" Margin="10,139,11,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="230,10,0,0" TextWrapping="Wrap" Text="Тел. номер:" VerticalAlignment="Top"/>
+        <TextBox x:Name="phoneNumberField" Height="23" Margin="230,31,10,0" VerticalAlignment="Top"/>
+        <Button x:Name="saveButton" Content="Сохранить" Margin="10,196,10,11" Click="saveButton_Click"/>
+    </Grid>
+</Window>
