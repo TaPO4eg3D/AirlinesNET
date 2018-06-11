@@ -68,8 +68,8 @@ namespace AirlinesNET.AdminControl
         /// <param name="e"></param>
         private void addEntity_Click(object sender, RoutedEventArgs e)
         {
-            CreateAirport createAirport = new CreateAirport();
-            createAirport.ShowDialog();
+            CreateFlight createFlight = new CreateFlight();
+            createFlight.ShowDialog();
             fetchData();
         }
 
@@ -92,8 +92,12 @@ namespace AirlinesNET.AdminControl
             {
                 return;
             }
-
-            db.Flights.RemoveRange(selectedEntities);
+            
+            foreach(var entity in selectedEntities)
+            {
+                var flight = db.Flights.Where(f => f.FlightID == entity.FlightID);
+                db.Flights.RemoveRange(flight);
+            }
             db.SaveChanges();
 
             fetchData();

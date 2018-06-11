@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminControl\CreateFlight.xaml.cs">
+      <DependentUpon>CreateFlight.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminControl\EditFlight.xaml.cs">
       <DependentUpon>EditFlight.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Shortcuts.cs" />
+    <Page Include="AdminControl\CreateFlight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AdminControl\EditFlight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
