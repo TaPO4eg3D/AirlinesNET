@@ -9,8 +9,8 @@
     <Grid>
         <DataGrid x:Name="mainGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,10" CellEditEnding="mainGrid_CellEditEnding">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Client.Name}" ClipboardContentBinding="{x:Null}" Header="Клиент"/>
-                <DataGridTextColumn Binding="{Binding Flight.FlightID}" ClipboardContentBinding="{x:Null}" Header="Рейс"/>
+                <DataGridTextColumn Binding="{Binding User.Profile.FullName}" ClipboardContentBinding="{x:Null}" Header="Клиент"/>
+                <DataGridTextColumn Binding="{Binding Flight.FlightName}" ClipboardContentBinding="{x:Null}" Header="Рейс"/>
                 <DataGridCheckBoxColumn Binding="{Binding Status}" ClipboardContentBinding="{x:Null}" Header="Оплачено"/>
             </DataGrid.Columns>
         </DataGrid>

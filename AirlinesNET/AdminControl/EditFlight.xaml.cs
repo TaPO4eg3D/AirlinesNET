@@ -85,6 +85,7 @@ namespace AirlinesNET.AdminControl
             flight.StartPoint = startPoint.AirportID;
             flight.EndPoint = endPoint.AirportID;
             flight.Seats = seats;
+            flight.FlightName = nameField.Text;
 
             db.SaveChanges();
 

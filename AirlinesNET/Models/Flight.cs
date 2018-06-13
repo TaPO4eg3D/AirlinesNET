@@ -5,10 +5,14 @@ namespace AirlinesNET.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     [Table("Flight")]
     public partial class Flight
     {
+
+        private DataContext db = new DataContext();
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Flight()
         {
@@ -39,5 +43,17 @@ namespace AirlinesNET.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
+
+        [NotMapped]
+        public int SeatsLeft
+        {
+            get
+            {
+                var purchasesAmount = db.Purchases.Where(p => p.FlightID == this.FlightID).ToList().Count;
+                return Seats - purchasesAmount; 
+            }
+            protected set { }
+        }
+
     }
 }

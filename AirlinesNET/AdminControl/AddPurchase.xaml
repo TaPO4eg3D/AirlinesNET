@@ -45,6 +45,7 @@
         <CheckBox Content="Только анонимные" x:Name="onlyAnon" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Click="checkBoxTrigger"/>
         <DataGrid x:Name="flightsGrid" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,369,10,0" Height="219" VerticalAlignment="Top">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер рейса" Binding="{Binding FlightName, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Компания" Binding="{Binding Company.Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Точка отправления">
                     <DataGridTextColumn.Binding>
@@ -63,7 +64,7 @@
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Количество мест" Binding="{Binding Seats, UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="Доступные места" Binding="{Binding TakenSeats, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Доступные места" Binding="{Binding SeatsLeft, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="searchFlightField" HorizontalAlignment="Left" Height="24" Margin="10,332,0,0" VerticalAlignment="Top" Width="219" TextChanged="searchField_TextChanged"/>

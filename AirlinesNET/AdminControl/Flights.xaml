@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="Рейсы" MinHeight="308.516" MinWidth="429.838" Height="418.016" Width="764.338">
     <Grid>
-        <DataGrid x:Name="mainGrid" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,10" CellEditEnding="mainGrid_CellEditEnding">
+        <DataGrid x:Name="mainGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,10" CellEditEnding="mainGrid_CellEditEnding">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер рейса" Binding="{Binding FlightName, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Компания" Binding="{Binding Company.Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Точка отправления">
                     <DataGridTextColumn.Binding>
@@ -27,7 +28,7 @@
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Количество мест" Binding="{Binding Seats, UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="Доступные места" Binding="{Binding TakenSeats, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Доступные места" Binding="{Binding SeatsLeft, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="searchField" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" VerticalAlignment="Top" Width="219" TextChanged="searchField_TextChanged"/>

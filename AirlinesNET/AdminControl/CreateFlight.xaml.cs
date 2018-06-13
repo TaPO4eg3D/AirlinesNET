@@ -61,7 +61,8 @@ namespace AirlinesNET.AdminControl
                 CompanyID = selectedCompany.CompanyID,
                 StartPoint = selectedStartPoint.AirportID,
                 EndPoint = selectedEndPoint.AirportID,
-                Seats = Convert.ToInt32(seatsField.Text)
+                Seats = Convert.ToInt32(seatsField.Text),
+                FlightName = nameField.Text
             };
 
             db.Flights.Add(flight);

@@ -10,6 +10,9 @@ namespace AirlinesNET.Models
     [Table("Profile")]
     public partial class Profile
     {
+
+        private DataContext db = new DataContext();
+
         public int ProfileID { get; set; }
 
         [Required]
@@ -43,7 +46,6 @@ namespace AirlinesNET.Models
         {
             get
             {
-                DataContext db = new DataContext();
                 return db.DocumentTypes.ToList();
             }
             protected set { }

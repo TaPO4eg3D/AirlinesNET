@@ -60,10 +60,10 @@ namespace AirlinesNET.AdminControl
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedFlight = (Flight)flightsGrid.SelectedItem;
-            var selectedClient = (User)clientsGrid.SelectedItem;
+            var selectedClient = (Profile)clientsGrid.SelectedItem;
             Purchase purchase = new Purchase
             {
-                UserID = selectedClient.UserID,
+                UserID = (int)selectedClient.UserID,
                 FlightID = selectedFlight.FlightID,
                 Status = true
             };

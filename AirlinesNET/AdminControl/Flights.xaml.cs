@@ -30,7 +30,7 @@ namespace AirlinesNET.AdminControl
         {
             string searchText = searchField.Text;
             var data = from p in db.Flights.AsNoTracking()
-                       where p.Company.Name.Contains(searchText) || p.Airport.Name.Contains(searchText) || p.Airport.Country.Contains(searchText) || p.Airport.City.Contains(searchText)
+                       where p.FlightName.Contains(searchText) || p.Company.Name.Contains(searchText) || p.Airport.Name.Contains(searchText) || p.Airport.Country.Contains(searchText) || p.Airport.City.Contains(searchText)
                        select p;
             mainGrid.ItemsSource = data.ToList();
         }
