@@ -17,6 +17,10 @@ namespace AirlinesNET.Models
 
         public int FlightID { get; set; }
 
+        [Required]
+        [StringLength(64)]
+        public string FlightName { get; set; }
+
         public int CompanyID { get; set; }
 
         public int StartPoint { get; set; }

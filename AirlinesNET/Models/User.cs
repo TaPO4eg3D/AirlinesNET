@@ -5,10 +5,14 @@ namespace AirlinesNET.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     [Table("User")]
     public partial class User
     {
+
+        private DataContext db = new DataContext();
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
@@ -37,5 +41,14 @@ namespace AirlinesNET.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
+
+        [NotMapped]
+        public Profile Profile {
+            get
+            {
+                return db.Profiles.Where(p => p.UserID == this.UserID).FirstOrDefault();
+            }
+            protected set { }
+        }
     }
 }

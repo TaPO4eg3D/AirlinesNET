@@ -10,10 +10,11 @@
     <Grid>
         <Image Source="/img/logo.png" Margin="10,10,10,0" Height="107" VerticalAlignment="Top"/>
         <Button x:Name="invokeUsers" Content="Пользователи" Margin="64,127,68,0" Height="29" VerticalAlignment="Top" Click="invokeUsers_Click"/>
-        <Button x:Name="invokeFlights" Content="Рейсы" Margin="64,161,68,0" Height="29" VerticalAlignment="Top" Click="invokeFlights_Click"/>
-        <Button x:Name="invokeCompanies" Click="invokeCompanies_Click" Content="Компании" Margin="64,195,68,0" Height="29" VerticalAlignment="Top"/>
-        <Button x:Name="Airports" Click="Airports_Click" Content="Аеропорты" Margin="64,229,68,0" Height="29" VerticalAlignment="Top"/>
-        <Button Content="Выйти" Height="29" Margin="40,0,45,24" VerticalAlignment="Bottom"/>
+        <Button x:Name="invokeFlights" Content="Рейсы" Margin="64,196,68,0" Height="29" VerticalAlignment="Top" Click="invokeFlights_Click"/>
+        <Button x:Name="invokeCompanies" Click="invokeCompanies_Click" Content="Компании" Margin="64,230,68,0" Height="29" VerticalAlignment="Top"/>
+        <Button x:Name="Airports" Click="Airports_Click" Content="Аеропорты" Margin="64,264,68,0" Height="29" VerticalAlignment="Top"/>
+        <Button Content="Выйти" Height="29" Margin="40,0,45,10" VerticalAlignment="Bottom"/>
+        <Button x:Name="invokePurchases" Content="Покупки" Margin="64,161,68,0" Height="29" VerticalAlignment="Top" Click="invokePurchases_Click"/>
 
     </Grid>
 </Window>

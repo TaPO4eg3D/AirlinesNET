@@ -1,0 +1,86 @@
+﻿<Window x:Class="AirlinesNET.AdminControl.AddPurchase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlinesNET.AdminControl"
+        mc:Ignorable="d"
+        Title="Добавить покупку" Height="719.833" Width="773.569">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Клиенты" VerticalAlignment="Top"/>
+        <DataGrid x:Name="clientsGrid" AutoGenerateColumns="False" IsReadOnly="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,0" Height="247" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTemplateColumn Header="Документ">
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox x:Name="selectDocument" ItemsSource="{Binding AllTypes}" SelectedValuePath="DocumentTypeID" DisplayMemberPath="Name"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DocumentType1.Name}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Серия и номер" Binding="{Binding SeriesAndNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Тел. номер" Binding="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="searchClientField" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" VerticalAlignment="Top" Width="219" TextChanged="searchClientsField_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" IsHitTestVisible="False" Foreground="DarkGray" Margin="17,13,0,0" TextWrapping="Wrap" Text="Имя пользователя или документ" VerticalAlignment="Top">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=searchField}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Image Source="/AirlinesNET;component/img/icons/magnifying-glass.png" Margin="236,11,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
+        <CheckBox Content="Только анонимные" x:Name="onlyAnon" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Click="checkBoxTrigger"/>
+        <DataGrid x:Name="flightsGrid" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,369,10,0" Height="219" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Компания" Binding="{Binding Company.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Точка отправления">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} - {1}">
+                            <Binding Path="Airport.Name" UpdateSourceTrigger="PropertyChanged"/>
+                            <Binding Path="Airport.Country" UpdateSourceTrigger="PropertyChanged"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Точка прибытия">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} - {1}">
+                            <Binding Path="Airport1.Name" UpdateSourceTrigger="PropertyChanged"/>
+                            <Binding Path="Airport1.Country" UpdateSourceTrigger="PropertyChanged"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Количество мест" Binding="{Binding Seats, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Доступные места" Binding="{Binding TakenSeats, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="searchFlightField" HorizontalAlignment="Left" Height="24" Margin="10,332,0,0" VerticalAlignment="Top" Width="219" TextChanged="searchField_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" IsHitTestVisible="False" Foreground="DarkGray" Margin="17,336,0,0" TextWrapping="Wrap" Text="Наименование, страна, город" VerticalAlignment="Top">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=searchField}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Image Source="/AirlinesNET;component/img/icons/magnifying-glass.png" Margin="236,334,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
+        <Button x:Name="saveButton" Content="Сохранить" Margin="10,625,10,10" Click="saveButton_Click"/>
+
+    </Grid>
+</Window>
