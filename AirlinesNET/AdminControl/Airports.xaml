@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlinesNET.AdminControl"
         mc:Ignorable="d"
-        Title="Компании" MinHeight="308.516" MinWidth="429.838" Height="418.016" Width="764.338">
+        Title="Аэропорты" MinHeight="308.516" MinWidth="429.838" Height="418.016" Width="764.338">
     <Grid>
         <DataGrid x:Name="mainGrid" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,10" CellEditEnding="mainGrid_CellEditEnding">
             <DataGrid.Columns>

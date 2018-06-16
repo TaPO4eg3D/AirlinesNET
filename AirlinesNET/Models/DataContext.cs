@@ -52,12 +52,12 @@ namespace AirlinesNET.Models
             modelBuilder.Entity<Company>()
                 .HasMany(e => e.Flights)
                 .WithRequired(e => e.Company)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Company>()
                 .HasMany(e => e.PastFlights)
                 .WithRequired(e => e.Company)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<DocumentType>()
                 .HasMany(e => e.Profiles)

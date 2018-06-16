@@ -60,7 +60,7 @@ namespace AirlinesNET.AdminControl
             var selectedEntities = mainGrid.SelectedItems.Cast<Airport>().ToList();
             if(selectedEntities.Count == 0)
             {
-                MessageBox.Show("Выберите хотя бы одну компанию!");
+                MessageBox.Show("Выберите хотя бы один аэропорт!");
                 return;
             }
 
@@ -73,6 +73,8 @@ namespace AirlinesNET.AdminControl
             foreach(var _entity in selectedEntities)
             {
                 var entity = db.Airports.Where(u => u.AirportID == _entity.AirportID).FirstOrDefault();
+                var related_enity = db.Flights.Where(f => f.StartPoint == entity.AirportID || f.EndPoint == entity.AirportID);
+                db.Flights.RemoveRange(related_enity);
                 db.Airports.Remove(entity);
             }
             db.SaveChanges();
