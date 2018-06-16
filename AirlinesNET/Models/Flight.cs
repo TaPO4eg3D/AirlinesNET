@@ -31,9 +31,11 @@ namespace AirlinesNET.Models
 
         public int EndPoint { get; set; }
 
-        public int Seats { get; set; }
+        public DateTime DepartureTime { get; set; }
 
-        public int? TakenSeats { get; set; }
+        public DateTime ArriveTime { get; set; }
+
+        public int Seats { get; set; }
 
         public virtual Airport Airport { get; set; }
 

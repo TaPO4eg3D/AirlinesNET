@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlinesNET.AdminControl"
         mc:Ignorable="d"
-        Title="Рейсы" MinHeight="308.516" MinWidth="429.838" Height="418.016" Width="764.338">
+        Title="Рейсы" MinHeight="308.516" MinWidth="429.838" Height="476.516" Width="1041.838">
     <Grid>
         <DataGrid x:Name="mainGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,10" CellEditEnding="mainGrid_CellEditEnding">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер рейса" Binding="{Binding FlightName, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Компания" Binding="{Binding Company.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Время отправления" Binding="{Binding DepartureTime, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Время прибытия" Binding="{Binding ArriveTime, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Точка отправления">
                     <DataGridTextColumn.Binding>
                         <MultiBinding StringFormat="{}{0} - {1}">

@@ -60,6 +60,9 @@ namespace AirlinesNET.AdminControl
             startPointGrid.SelectedItem = selectedStartPoint;
             endPointGrid.SelectedItem = selectedEndPoint;
             seatsField.Text = _selectedFlight.Seats.ToString();
+            nameField.Text = _selectedFlight.FlightName;
+            departureTime.Value = _selectedFlight.DepartureTime;
+            arriveTime.Value = _selectedFlight.ArriveTime;
 
         }
 
@@ -70,6 +73,9 @@ namespace AirlinesNET.AdminControl
             Company company = (Company)companyGrid.SelectedItem;
             Airport startPoint = (Airport)startPointGrid.SelectedItem;
             Airport endPoint = (Airport)endPointGrid.SelectedItem;
+            var departure = departureTime.Value;
+            var arrive = arriveTime.Value;
+
             int seats;
             try
             {
@@ -86,6 +92,8 @@ namespace AirlinesNET.AdminControl
             flight.EndPoint = endPoint.AirportID;
             flight.Seats = seats;
             flight.FlightName = nameField.Text;
+            flight.DepartureTime = (DateTime)departure;
+            flight.ArriveTime = (DateTime)arrive;
 
             db.SaveChanges();
 

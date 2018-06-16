@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlinesNET.AdminControl"
         mc:Ignorable="d"
-        Title="Добавить покупку" Height="719.833" Width="773.569">
+        MinHeight="671.833" MinWidth="449.569"
+        Title="Добавить покупку" Height="719.833" Width="1016.569">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Клиенты" VerticalAlignment="Top"/>
         <DataGrid x:Name="clientsGrid" AutoGenerateColumns="False" IsReadOnly="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,0" Height="247" VerticalAlignment="Top">
@@ -43,10 +44,12 @@
         </TextBlock>
         <Image Source="/AirlinesNET;component/img/icons/magnifying-glass.png" Margin="236,11,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
         <CheckBox Content="Только анонимные" x:Name="onlyAnon" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Click="checkBoxTrigger"/>
-        <DataGrid x:Name="flightsGrid" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,369,10,0" Height="219" VerticalAlignment="Top">
+        <DataGrid x:Name="flightsGrid" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*" Margin="10,369,10,101">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер рейса" Binding="{Binding FlightName, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Компания" Binding="{Binding Company.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Время отправления" Binding="{Binding DepartureTime, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Время прибытия" Binding="{Binding ArriveTime, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Точка отправления">
                     <DataGridTextColumn.Binding>
                         <MultiBinding StringFormat="{}{0} - {1}">
@@ -81,7 +84,7 @@
             </TextBlock.Style>
         </TextBlock>
         <Image Source="/AirlinesNET;component/img/icons/magnifying-glass.png" Margin="236,334,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
-        <Button x:Name="saveButton" Content="Сохранить" Margin="10,625,10,10" Click="saveButton_Click"/>
+        <Button x:Name="saveButton" Content="Сохранить" Margin="10,0,10,10" Click="saveButton_Click" Height="54" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

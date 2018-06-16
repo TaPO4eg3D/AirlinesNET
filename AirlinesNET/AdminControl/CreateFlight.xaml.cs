@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AirlinesNET.Models;
+using Xceed.Wpf;
 
 namespace AirlinesNET.AdminControl
 {
@@ -55,6 +56,8 @@ namespace AirlinesNET.AdminControl
             var selectedCompany = (Company)companyGrid.SelectedItem;
             var selectedStartPoint = (Airport)startPointGrid.SelectedItem;
             var selectedEndPoint = (Airport)endPointGrid.SelectedItem;
+            var departure = departureTime.Value;
+            var arrive = arriveTime.Value;
 
             Flight flight = new Flight
             {
@@ -62,7 +65,9 @@ namespace AirlinesNET.AdminControl
                 StartPoint = selectedStartPoint.AirportID,
                 EndPoint = selectedEndPoint.AirportID,
                 Seats = Convert.ToInt32(seatsField.Text),
-                FlightName = nameField.Text
+                FlightName = nameField.Text,
+                DepartureTime = (DateTime)departure,
+                ArriveTime = (DateTime)arrive
             };
 
             db.Flights.Add(flight);

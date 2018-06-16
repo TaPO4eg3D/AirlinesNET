@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlinesNET.AdminControl"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datatimepicker"
         mc:Ignorable="d"
-        Title="Редактировать рейс" Height="580.479" Width="633.904">
+        MinHeight="598.479" MinWidth="841.804"
+        Title="Редактировать рейс" Height="580.479" Width="955.804">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Компания" VerticalAlignment="Top"/>
         <DataGrid x:Name="companyGrid" ColumnWidth="*" CanUserAddRows="False" CanUserDeleteRows="False" Height="161" Margin="10,65,10,0" VerticalAlignment="Top" AutoGenerateColumns="False">
@@ -18,7 +21,7 @@
         <Image Source="/AirlinesNET;component/img/icons/magnifying-glass.png" Margin="181,33,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="20,234,0,0" TextWrapping="Wrap" Text="Точки отправления/прибытия" VerticalAlignment="Top"/>
-        <Grid Height="207" Margin="10,282,10,0" VerticalAlignment="Top">
+        <Grid Margin="10,282,10,60">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -40,11 +43,14 @@
         </Grid>
         <TextBox x:Name="pointsSeacrh" HorizontalAlignment="Left" Height="23" Margin="20,257,0,0" VerticalAlignment="Top" Width="166" TextChanged="pointsSeacrh_TextChanged"/>
         <Image Source="/AirlinesNET;component/img/icons/magnifying-glass.png" Margin="191,257,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
-        <TextBox x:Name="seatsField" Height="23" Margin="476,257,22,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="374,258,0,0" TextWrapping="Wrap" Text="Количество мест: " VerticalAlignment="Top"/>
-        <Button x:Name="saveButton" Content="Сохранить" Margin="20,494,20,10" Click="saveButton_Click"/>
-        <TextBox x:Name="nameField" Height="23" Margin="487,32,11,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="405,33,0,0" TextWrapping="Wrap" Text="Номер рейса: " VerticalAlignment="Top"/>
+        <TextBox x:Name="seatsField" Height="23" Margin="0,257,22,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="204"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,257,231,0" TextWrapping="Wrap" Text="Количество мест: " VerticalAlignment="Top"/>
+        <Button x:Name="saveButton" Content="Сохранить" Margin="20,0,20,10" Click="saveButton_Click" Height="45" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="nameField" Height="23" Margin="0,256,341,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="185"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,257,531,0" TextWrapping="Wrap" Text="Номер рейса: " VerticalAlignment="Top"/>
+        <xctk:DateTimePicker x:Name="arriveTime" Margin="0,31,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="216"/>
+        <xctk:DateTimePicker x:Name="departureTime" HorizontalAlignment="Right" Margin="0,31,238,0" VerticalAlignment="Top" Width="173"/>
+        <TextBlock Margin="0,31,416,0" TextWrapping="Wrap" Text="Отправление/прибытие:" VerticalAlignment="Top" HorizontalAlignment="Right" Width="153"/>
 
     </Grid>
 </Window>
