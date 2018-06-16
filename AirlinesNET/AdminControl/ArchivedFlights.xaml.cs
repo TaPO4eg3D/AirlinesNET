@@ -18,7 +18,7 @@ namespace AirlinesNET.AdminControl
     /// <summary>
     /// Interaction logic for Users.xaml
     /// </summary>
-    public partial class Flights : Window
+    public partial class ArchivedFlights : Window
     {
 
         private DataContext db = new DataContext();
@@ -29,7 +29,7 @@ namespace AirlinesNET.AdminControl
         private void fetchData()
         {
             string searchText = searchField.Text;
-            var data = from p in db.Flights.AsNoTracking()
+            var data = from p in db.PastFlights.AsNoTracking()
                        where p.FlightName.Contains(searchText) || p.Company.Name.Contains(searchText) || p.Airport.Name.Contains(searchText) || p.Airport.Country.Contains(searchText) || p.Airport.City.Contains(searchText)
                        select p;
             mainGrid.ItemsSource = data.ToList();
@@ -55,7 +55,7 @@ namespace AirlinesNET.AdminControl
             fetchData();
         }
 
-        public Flights()
+        public ArchivedFlights()
         {
             InitializeComponent();
             fetchData();
@@ -80,10 +80,10 @@ namespace AirlinesNET.AdminControl
         /// <param name="e"></param>
         private void deleteEntity_Click(object sender, RoutedEventArgs e)
         {
-            var selectedEntities = mainGrid.SelectedItems.Cast<Flight>().ToList();
+            var selectedEntities = mainGrid.SelectedItems.Cast<PastFlight>().ToList();
             if(selectedEntities.Count == 0)
             {
-                MessageBox.Show("Выберите хотя бы один рейс!");
+                MessageBox.Show("Выберите хотя бы одну компанию!");
                 return;
             }
 
@@ -95,8 +95,8 @@ namespace AirlinesNET.AdminControl
             
             foreach(var entity in selectedEntities)
             {
-                var flight = db.Flights.Where(f => f.FlightID == entity.FlightID);
-                db.Flights.RemoveRange(flight);
+                var flight = db.PastFlights.Where(f => f.FlightID == entity.FlightID);
+                db.PastFlights.RemoveRange(flight);
             }
             db.SaveChanges();
 
@@ -139,65 +139,15 @@ namespace AirlinesNET.AdminControl
             fetchData();
         }
 
-        private void archivedEntity_Click(object sender, RoutedEventArgs e)
+        private void mainGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ArchivedFlights archivedFlights = new ArchivedFlights();
-            archivedFlights.ShowDialog();
-        }
-
-        private void addToArchive_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedFlights = mainGrid.SelectedItems.Cast<Flight>().ToList();
-            if (selectedFlights.Count == 0)
+            var selectedFlight = ((DataGrid)sender).SelectedItem as PastFlight;
+            if(selectedFlight == null)
             {
-                MessageBox.Show("Выберите рейс(ы)!");
                 return;
             }
-
-            var confirmation = MessageBox.Show("Вы уверены, что хотите удалить выбраные рейсы?", "Подтвердите удаление", MessageBoxButton.YesNo);
-            if (confirmation == MessageBoxResult.No)
-            {
-                return;
-
-            }
-
-            foreach(var selectedFlight in selectedFlights)
-            {
-                PastFlight pastFlight = new PastFlight
-                {
-                    FlightID = selectedFlight.FlightID,
-                    FlightName = selectedFlight.FlightName,
-                    CompanyID = selectedFlight.CompanyID,
-                    StartPoint = selectedFlight.StartPoint,
-                    EndPoint = selectedFlight.EndPoint,
-                    DepartureTime = selectedFlight.DepartureTime,
-                    ArriveTime = selectedFlight.ArriveTime,
-                    Seats = selectedFlight.Seats
-                };
-                db.PastFlights.Add(pastFlight);
-                db.SaveChanges();
-                var purchasesQuery = db.Purchases.Where(p => p.FlightID == selectedFlight.FlightID);
-                var purchases = purchasesQuery.ToList();
-                foreach (var purchase in purchases)
-                {
-                    PastPurchase pastPurchase = new PastPurchase
-                    {
-                        UserID = purchase.UserID,
-                        FlightID = purchase.FlightID,
-                        Status = purchase.Status
-                    };
-                    db.PastPurchases.Add(pastPurchase);
-                }
-                if (purchases.Count == 0)
-                {
-                    db.Purchases.RemoveRange(purchasesQuery);
-                }
-                db.Flights.Attach(selectedFlight);
-                db.Flights.Remove(selectedFlight);
-                db.SaveChanges();
-            }
-            MessageBox.Show("Успешно перенесено в архив!");
-            fetchData();
+            var purchases = db.PastPurchases.Where(pp => pp.FlightID == selectedFlight.FlightID).ToList();
+            purchasesGrid.ItemsSource = purchases;
         }
     }
 }

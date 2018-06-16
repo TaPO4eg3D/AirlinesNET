@@ -19,6 +19,7 @@ namespace AirlinesNET.Models
             Purchases = new HashSet<Purchase>();
         }
 
+        [Key]
         public int FlightID { get; set; }
 
         [Required]

@@ -73,7 +73,7 @@ namespace AirlinesNET.Models
             modelBuilder.Entity<PastFlight>()
                 .HasMany(e => e.PastPurchases)
                 .WithRequired(e => e.PastFlight)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.PastPurchases)

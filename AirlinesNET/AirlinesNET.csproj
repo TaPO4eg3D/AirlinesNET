@@ -87,6 +87,9 @@
     <Compile Include="AdminControl\AddPurchase.xaml.cs">
       <DependentUpon>AddPurchase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminControl\ArchivedFlights.xaml.cs">
+      <DependentUpon>ArchivedFlights.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminControl\Purchases.xaml.cs">
       <DependentUpon>Purchases.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
     <Page Include="AdminControl\AddPurchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminControl\ArchivedFlights.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="AdminControl\Purchases.xaml">
       <Generator>MSBuild:Compile</Generator>

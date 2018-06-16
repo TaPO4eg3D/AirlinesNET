@@ -29,9 +29,11 @@
         </TextBlock>
         <Image Source="/img/icons/magnifying-glass.png" Margin="236,11,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
         <Button x:Name="addEntity" Click="addEntity_Click" Background="Transparent" BorderBrush="Transparent" Margin="0,22,10,0" VerticalAlignment="Top" Height="39" HorizontalAlignment="Right" Width="39">
+            <Button.ToolTip>Добавить запись</Button.ToolTip>
             <Image Source="/img/icons/plus-black-symbol.png"/>
         </Button>
         <Button x:Name="deleteEntity" Click="deleteEntity_Click" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Margin="0,22,54,0" VerticalAlignment="Top" Width="39" Height="39">
+            <Button.ToolTip>Удалить запись</Button.ToolTip>
             <Image Source="/img/icons/trash.png"/>
         </Button>
 
