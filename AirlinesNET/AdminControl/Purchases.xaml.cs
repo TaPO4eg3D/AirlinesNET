@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AirlinesNET.Models;
+using Xceed.Words.NET;
 
 namespace AirlinesNET.AdminControl
 {
@@ -60,7 +61,7 @@ namespace AirlinesNET.AdminControl
             var selectedEntities = mainGrid.SelectedItems.Cast<Purchase>().ToList();
             if(selectedEntities.Count == 0)
             {
-                MessageBox.Show("Выберите хотя бы одну компанию!");
+                MessageBox.Show("Выберите хотя бы одну покупку!");
                 return;
             }
 
@@ -92,5 +93,41 @@ namespace AirlinesNET.AdminControl
             catch { }
         }
 
+        private void printTicket_Click(object sender, RoutedEventArgs e)
+        {
+            var purchase = mainGrid.SelectedItem as Purchase;
+            if (purchase == null)
+            {
+                MessageBox.Show("Выберите покупку!");
+                return;
+            }
+            var confirmation = MessageBox.Show("Вы уверены, что хотите распечатать билет?", "Подтвердите удаление", MessageBoxButton.YesNo);
+            if (confirmation == MessageBoxResult.No)
+            {
+                return;
+            }
+            
+            using (var document = DocX.Load("./Reports/TicketTemplate.docx"))
+            {
+                document.ReplaceText("{Company}", purchase.Flight.Company.Name);
+                document.ReplaceText("{fullName}", purchase.User.Profile.FullName);
+                document.ReplaceText("{departureDate}", purchase.Flight.DepartureTime.ToShortDateString());
+                document.ReplaceText("{departureName}", purchase.Flight.Airport.Name);
+                document.ReplaceText("{departureCity}", purchase.Flight.Airport.City);
+                document.ReplaceText("{departureCountry}", purchase.Flight.Airport.Country);
+                document.ReplaceText("{departureArrive}", purchase.Flight.ArriveTime.ToShortDateString());
+                document.ReplaceText("{arriveName}", purchase.Flight.Airport1.Name);
+                document.ReplaceText("{arriveCity}", purchase.Flight.Airport1.City);
+                document.ReplaceText("{arriveCountry}", purchase.Flight.Airport1.Country);
+                document.ReplaceText("{startTime}", purchase.Flight.DepartureTime.ToShortTimeString());
+                document.ReplaceText("{endTime}", purchase.Flight.ArriveTime.ToShortTimeString());
+
+                var path = "./Reports/";
+                var name = String.Format("{0}ticket_{1}_{2}_{3}.docx", path, purchase.User.Profile.FullName, purchase.FlightID, purchase.UserID);
+                document.SaveAs(name);
+                MessageBox.Show("Успешно!");
+            }
+
+        }
     }
 }

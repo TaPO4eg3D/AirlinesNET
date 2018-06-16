@@ -36,6 +36,10 @@
             <Button.ToolTip>Удалить запись</Button.ToolTip>
             <Image Source="/img/icons/trash.png"/>
         </Button>
+        <Button x:Name="printTicket" Click="printTicket_Click" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Margin="0,22,98,0" VerticalAlignment="Top" Width="39" Height="39">
+            <Button.ToolTip>Распечатать билет</Button.ToolTip>
+            <Image Source="/AirlinesNET;component/img/icons/printing-tool.png"/>
+        </Button>
 
     </Grid>
 </Window>
