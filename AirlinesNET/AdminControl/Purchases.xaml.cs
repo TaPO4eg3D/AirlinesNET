@@ -125,7 +125,7 @@ namespace AirlinesNET.AdminControl
                 document.ReplaceText("{endTime}", purchase.Flight.ArriveTime.ToShortTimeString());
 
                 var path = "./Reports/";
-                var name = String.Format("{0}ticket_{1}_{2}_{3}.docx", path, purchase.User.Profile.FullName, purchase.FlightID, purchase.UserID);
+                var name = String.Format("{0}ticket_{1}_{2}_{3}.docx", path, purchase.User.Profile.FullName, purchase.Flight.FlightName, purchase.FlightID);
                 document.SaveAs(name);
                 MessageBox.Show("Успешно!");
             }

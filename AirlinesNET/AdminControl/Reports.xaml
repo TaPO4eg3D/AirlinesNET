@@ -1,0 +1,27 @@
+﻿<Window x:Class="AirlinesNET.AdminControl.Reports"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlinesNET.AdminControl"
+        mc:Ignorable="d"
+        Title="Отчеты" Height="230.137" Width="320.547">
+    <Grid>
+        <TabControl Margin="10">
+            <TabItem Header="О прибыли">
+                <Grid Background="#FFE5E5E5">
+                    <DatePicker x:Name="profitStartDate" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="215"/>
+                    <DatePicker x:Name="profitEndDate" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="215"/>
+                    <Button x:Name="profitPrint" Content="Составить" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="267" Height="37" Click="profitPrint_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Все рейсы">
+                <Grid Background="#FFE5E5E5">
+                    <DatePicker x:Name="flightStartDate" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="215"/>
+                    <DatePicker x:Name="flightEndDate" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="215"/>
+                    <Button x:Name="flightPrint" Content="Составить" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="267" Height="37"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
