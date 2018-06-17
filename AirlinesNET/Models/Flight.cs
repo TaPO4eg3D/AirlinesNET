@@ -38,6 +38,8 @@ namespace AirlinesNET.Models
 
         public int Seats { get; set; }
 
+        public decimal Price { get; set; }
+
         public virtual Airport Airport { get; set; }
 
         public virtual Airport Airport1 { get; set; }

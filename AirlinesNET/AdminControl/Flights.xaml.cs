@@ -172,7 +172,8 @@ namespace AirlinesNET.AdminControl
                     EndPoint = selectedFlight.EndPoint,
                     DepartureTime = selectedFlight.DepartureTime,
                     ArriveTime = selectedFlight.ArriveTime,
-                    Seats = selectedFlight.Seats
+                    Seats = selectedFlight.Seats,
+                    Price = selectedFlight.Price
                 };
                 db.PastFlights.Add(pastFlight);
                 db.SaveChanges();

@@ -68,6 +68,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Количество мест" Binding="{Binding Seats, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Доступные места" Binding="{Binding SeatsLeft, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="searchFlightField" HorizontalAlignment="Left" Height="24" Margin="10,332,0,0" VerticalAlignment="Top" Width="219" TextChanged="searchField_TextChanged"/>

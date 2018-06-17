@@ -63,6 +63,7 @@ namespace AirlinesNET.AdminControl
             nameField.Text = _selectedFlight.FlightName;
             departureTime.Value = _selectedFlight.DepartureTime;
             arriveTime.Value = _selectedFlight.ArriveTime;
+            priceField.Text = _selectedFlight.Price.ToString();
 
         }
 
@@ -75,6 +76,7 @@ namespace AirlinesNET.AdminControl
             Airport endPoint = (Airport)endPointGrid.SelectedItem;
             var departure = departureTime.Value;
             var arrive = arriveTime.Value;
+            var price = Convert.ToDecimal(priceField.Text);
 
             int seats;
             try
@@ -94,6 +96,7 @@ namespace AirlinesNET.AdminControl
             flight.FlightName = nameField.Text;
             flight.DepartureTime = (DateTime)departure;
             flight.ArriveTime = (DateTime)arrive;
+            flight.Price = price;
 
             db.SaveChanges();
 

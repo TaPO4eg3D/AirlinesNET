@@ -7,8 +7,8 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datatimepicker"
         mc:Ignorable="d"
-        MinHeight="598.479" MinWidth="841.804"
-        Title="Редактировать рейс" Height="580.479" Width="955.804">
+        MinHeight="598.479" MinWidth="1038.304"
+        Title="Редактировать рейс" Height="580.479" Width="1038.304">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Компания" VerticalAlignment="Top"/>
         <DataGrid x:Name="companyGrid" ColumnWidth="*" CanUserAddRows="False" CanUserDeleteRows="False" Height="161" Margin="10,65,10,0" VerticalAlignment="Top" AutoGenerateColumns="False">
@@ -51,6 +51,8 @@
         <xctk:DateTimePicker x:Name="arriveTime" Margin="0,31,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="216"/>
         <xctk:DateTimePicker x:Name="departureTime" HorizontalAlignment="Right" Margin="0,31,238,0" VerticalAlignment="Top" Width="173"/>
         <TextBlock Margin="0,31,416,0" TextWrapping="Wrap" Text="Отправление/прибытие:" VerticalAlignment="Top" HorizontalAlignment="Right" Width="153"/>
+        <TextBox x:Name="priceField" Height="23" Margin="0,256,631,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,256,757,0" TextWrapping="Wrap" Text="Цена: " VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

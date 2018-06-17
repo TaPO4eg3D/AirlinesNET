@@ -58,6 +58,7 @@ namespace AirlinesNET.AdminControl
             var selectedEndPoint = (Airport)endPointGrid.SelectedItem;
             var departure = departureTime.Value;
             var arrive = arriveTime.Value;
+            var price = Convert.ToDecimal(priceField.Text);
 
             Flight flight = new Flight
             {
@@ -67,7 +68,8 @@ namespace AirlinesNET.AdminControl
                 Seats = Convert.ToInt32(seatsField.Text),
                 FlightName = nameField.Text,
                 DepartureTime = (DateTime)departure,
-                ArriveTime = (DateTime)arrive
+                ArriveTime = (DateTime)arrive,
+                Price = price
             };
 
             db.Flights.Add(flight);
