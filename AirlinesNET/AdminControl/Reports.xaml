@@ -12,14 +12,14 @@
                 <Grid Background="#FFE5E5E5">
                     <DatePicker x:Name="profitStartDate" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="215"/>
                     <DatePicker x:Name="profitEndDate" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="215"/>
-                    <Button x:Name="profitPrint" Content="Составить" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="267" Height="37" Click="profitPrint_Click"/>
+                    <Button x:Name="profitPrint" Content="Составить" Margin="10,0,10,10" Click="profitPrint_Click" Height="37" VerticalAlignment="Bottom"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Все рейсы">
                 <Grid Background="#FFE5E5E5">
                     <DatePicker x:Name="flightStartDate" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="215"/>
                     <DatePicker x:Name="flightEndDate" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="215"/>
-                    <Button x:Name="flightPrint" Content="Составить" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="267" Height="37"/>
+                    <Button x:Name="flightPrint" Content="Составить" Margin="10,0,10,10" Height="37" VerticalAlignment="Bottom" Click="flightPrint_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

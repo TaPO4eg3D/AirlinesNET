@@ -53,5 +53,11 @@ namespace AirlinesNET.AdminControl
             Purchases purchases = new Purchases();
             purchases.ShowDialog();
         }
+
+        private void invokeReports_Click(object sender, RoutedEventArgs e)
+        {
+            Reports reports = new Reports();
+            reports.ShowDialog();
+        }
     }
 }

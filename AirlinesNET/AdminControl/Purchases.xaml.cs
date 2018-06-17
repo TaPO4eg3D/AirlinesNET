@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using AirlinesNET.Models;
 using Xceed.Words.NET;
 using System.IO;
+using System.Diagnostics;
 
 namespace AirlinesNET.AdminControl
 {
@@ -124,10 +125,10 @@ namespace AirlinesNET.AdminControl
                 document.ReplaceText("{startTime}", purchase.Flight.DepartureTime.ToShortTimeString());
                 document.ReplaceText("{endTime}", purchase.Flight.ArriveTime.ToShortTimeString());
 
-                var path = "./Reports/";
-                var name = String.Format("{0}ticket_{1}_{2}_{3}.docx", path, purchase.User.Profile.FullName, purchase.Flight.FlightName, purchase.FlightID);
-                document.SaveAs(name);
+                var path = String.Format("./Reports/ticket_{0}_{1}_{2}.docx", purchase.User.Profile.FullName.Replace(" ", "_"), purchase.Flight.FlightName, purchase.FlightID);
+                document.SaveAs(path);
                 MessageBox.Show("Успешно!");
+                Process.Start("WINWORD.EXE", path);
             }
 
         }
