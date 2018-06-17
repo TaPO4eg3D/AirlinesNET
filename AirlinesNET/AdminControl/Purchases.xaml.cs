@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AirlinesNET.Models;
 using Xceed.Words.NET;
+using System.IO;
 
 namespace AirlinesNET.AdminControl
 {
@@ -106,8 +107,9 @@ namespace AirlinesNET.AdminControl
             {
                 return;
             }
-            
-            using (var document = DocX.Load("./Reports/TicketTemplate.docx"))
+
+            Stream _doc = new MemoryStream(Properties.Resources.TicketTemplate);
+            using (var document = DocX.Load(_doc))
             {
                 document.ReplaceText("{Company}", purchase.Flight.Company.Name);
                 document.ReplaceText("{fullName}", purchase.User.Profile.FullName);
