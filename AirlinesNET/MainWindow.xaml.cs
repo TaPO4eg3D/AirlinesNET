@@ -56,11 +56,14 @@ namespace AirlinesNET
                 MessageBox.Show("Неверный логин или пароль!");
                 return;
             }
-
+            Shortcuts.AuthUserID = user.UserID;
             this.Hide();
             switch (user.Role)
             {
                 case 0:
+                    UserControl.MainPanel userMainPanel = new UserControl.MainPanel();
+                    userMainPanel.Show();
+                    userMainPanel.Closed += MainPanel_Closed;
                     break;
                 case 1:
                     AdminControl.MainPanel mainPanel = new AdminControl.MainPanel();

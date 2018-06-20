@@ -9,6 +9,7 @@ namespace AirlinesNET.Utilities
 {
     static class Shortcuts
     {
+        public static int AuthUserID { get; set; }
         public static bool checkIfEmptyString(params string[] fields)
         {
             foreach(string field in fields)

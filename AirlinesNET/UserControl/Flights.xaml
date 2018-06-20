@@ -1,0 +1,57 @@
+﻿<Window x:Class="AirlinesNET.UserControl.Flights"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlinesNET.UserControl"
+        mc:Ignorable="d"
+        Title="Рейсы" MinHeight="308.516" MinWidth="429.838" Height="476.516" Width="1041.838">
+    <Grid>
+        <DataGrid x:Name="mainGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" ColumnWidth="*" Margin="10,66,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер рейса" Binding="{Binding FlightName, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Компания" Binding="{Binding Company.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Время отправления" Binding="{Binding DepartureTime, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Время прибытия" Binding="{Binding ArriveTime, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Точка отправления">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} - {1}">
+                            <Binding Path="Airport.Name" UpdateSourceTrigger="PropertyChanged"/>
+                            <Binding Path="Airport.Country" UpdateSourceTrigger="PropertyChanged"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Точка прибытия">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} - {1}">
+                            <Binding Path="Airport1.Name" UpdateSourceTrigger="PropertyChanged"/>
+                            <Binding Path="Airport1.Country" UpdateSourceTrigger="PropertyChanged"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Количество мест" Binding="{Binding Seats, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Доступные места" Binding="{Binding SeatsLeft, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="searchField" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" VerticalAlignment="Top" Width="219" TextChanged="searchField_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" IsHitTestVisible="False" Foreground="DarkGray" Margin="17,13,0,0" TextWrapping="Wrap" Text="Наименование, страна, город" VerticalAlignment="Top">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=searchField}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Image Source="/img/icons/magnifying-glass.png" Margin="236,11,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="24"/>
+        <Button x:Name="addEntity" Click="addEntity_Click" Background="Transparent" BorderBrush="Transparent" Margin="0,22,10,0" VerticalAlignment="Top" Height="39" HorizontalAlignment="Right" Width="39">
+            <Button.ToolTip>Купить</Button.ToolTip>
+            <Image Source="/img/icons/dollar-symbol.png"/>
+        </Button>
+
+    </Grid>
+</Window>
